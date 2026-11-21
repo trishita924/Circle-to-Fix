@@ -6,13 +6,11 @@ Circle to Fix is a browser-based developer productivity tool that helps users hi
 
 Instead of explaining a visual problem through multiple messages, simply upload a screenshot, mark the problematic area, describe the issue, and generate a ready-to-use prompt.
 
-## 🚀 Quick Access
+## Live Demo
 
-### 📦 Download Project ZIP
+[Open Circle to Fix](https://trishita924.github.io/Circle-to-Fix/)
 
-[Download Circle to Fix – Web Edition](https://github.com/trishita924/Circle-to-Fix/archive/refs/heads/main.zip)
-
-## ✨ Features
+## Features
 
 - **Screenshot Upload:** Upload PNG, JPG and JPEG screenshots.
 - **Drag & Drop:** Easily add screenshots to the editor.
@@ -25,7 +23,7 @@ Instead of explaining a visual problem through multiple messages, simply upload 
 - **Screenshot Export:** Download annotated screenshots as PNG.
 - **Recent Reports:** Keep track of previous bug reports locally.
 
-## 🛠️ Technology Used
+## Technology Used
 
 - HTML
 - CSS
@@ -33,7 +31,7 @@ Instead of explaining a visual problem through multiple messages, simply upload 
 - HTML Canvas
 - Local Storage
 
-## 📖 How to Use
+## How to Use
 
 1. Open Circle to Fix in your browser.
 2. Upload a screenshot of the webpage or application.
@@ -46,13 +44,13 @@ Instead of explaining a visual problem through multiple messages, simply upload 
 9. Download the annotated screenshot.
 10. Paste the prompt into Gemini, Claude or ChatGPT and attach the screenshot manually.
 
-## 💡 Example Use Case
+## Example Use Case
 
 **Problem:** A Buy button's text overflows outside its pricing card on mobile screens.
 
 **Solution:** Upload the screenshot, circle the button, describe the issue and generate a structured prompt explaining the problem to an AI coding assistant.
 
-## 🔒 Privacy
+## Privacy
 
 - No login required.
 - No backend server.
@@ -60,11 +58,11 @@ Instead of explaining a visual problem through multiple messages, simply upload 
 - Screenshots are processed locally in the browser.
 - No screenshot uploads to external servers.
 
-## 🎯 Project Objective
+## Project Objective
 
 To simplify communication between developers and AI coding assistants by turning visual UI problems into clear, structured and actionable bug-fixing prompts.
 
-## 👩‍💻 Developer
+## Developer
 
 Created as part of my Generative AI Internship project series at Bharat Space Education Research Centre.
 
