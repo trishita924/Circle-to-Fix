@@ -1,62 +1,73 @@
-# Circle to Fix — Web Edition
+# Circle to Fix – Screenshot Annotation & AI Bug Prompt Generator
 
 **Point at the problem. Let AI fix the rest.**
 
-**Circle to Fix** is a 100% browser-based, GitHub Pages–compatible web application that helps developers explain UI bugs to AI coding agents (Gemini, Claude, or ChatGPT) in seconds. Upload or paste a screenshot, draw a circle, box, arrow, or label over the broken UI element, optionally paste your HTML/CSS snippet, and export both a structured bug-fixing prompt and the annotated PNG screenshot.
+Circle to Fix is a browser-based developer productivity tool that helps users highlight UI issues on screenshots, describe bugs, and generate structured prompts for AI coding assistants.
+
+Instead of explaining a visual problem through multiple messages, simply upload a screenshot, mark the problematic area, describe the issue, and generate a ready-to-use prompt.
+
+## 🚀 Quick Access
+
+### 📦 Download Project ZIP
+
+[Download Circle to Fix – Web Edition](https://github.com/trishita924/Circle-to-Fix/archive/refs/heads/main.zip)
+
+## ✨ Features
+
+- **Screenshot Upload:** Upload PNG, JPG and JPEG screenshots.
+- **Drag & Drop:** Easily add screenshots to the editor.
+- **Drawing Tools:** Highlight problems using circles, rectangles, arrows and freehand drawing.
+- **Text Annotations:** Add labels and notes directly to screenshots.
+- **Undo & Clear:** Manage annotations easily.
+- **Bug Description:** Explain the issue and describe the expected behaviour.
+- **AI Prompt Generator:** Generate structured bug-fixing prompts based on your description and annotations.
+- **One-Click Copy:** Copy the generated prompt to use with AI coding assistants.
+- **Screenshot Export:** Download annotated screenshots as PNG.
+- **Recent Reports:** Keep track of previous bug reports locally.
+
+## 🛠️ Technology Used
+
+- HTML
+- CSS
+- JavaScript
+- HTML Canvas
+- Local Storage
+
+## 📖 How to Use
+
+1. Open Circle to Fix in your browser.
+2. Upload a screenshot of the webpage or application.
+3. Select a drawing tool.
+4. Circle, highlight or point towards the problematic area.
+5. Write a clear description of the issue.
+6. Optionally provide relevant HTML, CSS or a CSS selector.
+7. Click **Generate Prompt**.
+8. Click **Copy Prompt** to copy the complete bug-fixing instructions.
+9. Download the annotated screenshot.
+10. Paste the prompt into Gemini, Claude or ChatGPT and attach the screenshot manually.
+
+## 💡 Example Use Case
+
+**Problem:** A Buy button's text overflows outside its pricing card on mobile screens.
+
+**Solution:** Upload the screenshot, circle the button, describe the issue and generate a structured prompt explaining the problem to an AI coding assistant.
+
+## 🔒 Privacy
+
+- No login required.
+- No backend server.
+- No external AI API.
+- Screenshots are processed locally in the browser.
+- No screenshot uploads to external servers.
+
+## 🎯 Project Objective
+
+To simplify communication between developers and AI coding assistants by turning visual UI problems into clear, structured and actionable bug-fixing prompts.
+
+## 👩‍💻 Developer
+
+Created as part of my Generative AI Internship project series at Bharat Space Education Research Centre.
 
 ---
 
-## Features
-
-- **Landing Dashboard**: Hero overview, How It Works, Feature cards, Privacy guarantee, and Recent Bug Reports persisted in `localStorage`.
-- **Interactive HTML5 Canvas Bug Studio**:
-  - Upload via file picker, drag-and-drop, or `Ctrl+V` / `Cmd+V` clipboard paste (plus a built-in **Try Sample Screenshot** generator).
-  - Draw **Circles**, **Rectangles**, **Arrows**, **Freehand Pen**, and **Text Labels** with customizable colors and stroke widths, plus **Undo** (`Ctrl+Z`) and **Clear**.
-- **AI Bug-Fixing Prompt Generator**: Builds a structured Markdown prompt summarizing your visual annotations, issue category, expected behavior, and optional HTML/CSS snippet.
-- **One-Click Export**: Copy the prompt to your clipboard and download the annotated screenshot as a high-resolution PNG.
-- **100% Local & Private**: Pure HTML, CSS, and JavaScript—no Chrome extension, no backend, no login, and no external APIs.
-
----
-
-## Folder Structure
-
-```text
-Circle-to-Fix-Web/
-├── index.html
-├── README.md
-├── TESTING-CHECKLIST.md
-└── assets/
-    ├── css/
-    │   └── style.css
-    ├── js/
-    │   ├── app.js
-    │   ├── canvas.js
-    │   ├── prompt.js
-    │   └── storage.js
-    └── icons/
-        ├── favicon.png
-        ├── icon-192.png
-        └── icon-512.png
-```
-
----
-
-## How to Run Locally
-
-Open `Circle-to-Fix-Web/index.html` directly in any modern browser, or serve it with a local static server:
-
-```bash
-cd Circle-to-Fix-Web
-python3 -m http.server 8080
-```
-
-Then visit `http://localhost:8080`.
-
----
-
-## How to Deploy to GitHub Pages
-
-1. Extract `Circle-to-Fix-Web.zip` and push the contents of `Circle-to-Fix-Web/` (with `index.html` at the repository root) to GitHub.
-2. Open **Settings → Pages** in your repository.
-3. Under **Build and deployment**, select **Deploy from a branch**, choose `main` and `/ (root)`, and click **Save**.
-4. Your app will be live at `https://<your-username>.github.io/<repo-name>/`.
+**Circle it. Describe it. Fix it.**
