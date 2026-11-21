@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0F19" />
+  <meta name="description" content="Circle to Fix — Point at the problem. Let AI fix the rest. Annotate UI bug screenshots and generate structured prompts for Gemini, Claude, or ChatGPT." />
+  <title>Circle to Fix — Point at the problem. Let AI fix the rest.</title>
+  <link rel="icon" type="image/png" href="./assets/icons/favicon.png" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <button type="button" class="brand-btn" id="nav-brand-home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Circle to Fix</span>
+      </button>
+      <div class="nav-actions">
+        <button type="button" class="btn btn-ghost btn-sm" id="nav-home-btn">Dashboard</button>
+        <button type="button" class="btn btn-primary btn-sm" id="nav-studio-btn">Start Fixing</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== VIEW 1: MAIN DASHBOARD / LANDING ==================== -->
+  <main id="view-home" class="view active">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-pill">100% Local • Browser-Only UI Bug Studio</span>
+          <h1>Point at the problem.<br /><span>Let AI fix the rest.</span></h1>
+          <p class="hero-sub">
+            Upload or paste a screenshot, circle the broken UI element, add your description or HTML/CSS snippet, and export a structured bug-fixing prompt for Gemini, Claude, or ChatGPT.
+          </p>
+          <div class="hero-ctas">
+            <button type="button" class="btn btn-primary btn-lg" id="hero-start-btn">Start Fixing →</button>
+            <button type="button" class="btn btn-outline btn-lg" id="hero-sample-btn">Try Sample Screenshot</button>
+          </div>
+        </div>
+
+        <div class="hero-preview" aria-hidden="true">
+          <div class="mock-browser">
+            <div class="mock-dots"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="mock-card">
+                <div class="mock-line w-60"></div>
+                <div class="mock-line w-85"></div>
+                <div class="mock-btn-bug">
+                  Submit Order
+                  <div class="mock-circle-ring"></div>
+                </div>
+              </div>
+              <div class="mock-prompt-chip">
+                ✦ Prompt Ready • 1 Red Circle • Copy &amp; Download PNG
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-grid">
+          <div class="card step-card">
+            <div class="step-num">1</div>
+            <h3>Upload or Paste</h3>
+            <p>Drop a screenshot of your webpage, pick a file, or press <kbd>Ctrl+V</kbd> to paste directly from your clipboard.</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-num">2</div>
+            <h3>Circle the Bug</h3>
+            <p>Draw a crisp circle, rectangle, arrow, or text label directly over the misaligned button, overflow, or broken layout.</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-num">3</div>
+            <h3>Copy Prompt &amp; PNG</h3>
+            <p>Generate a structured prompt with your optional HTML/CSS code, download the annotated PNG, and paste into any AI agent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Built for Fast UI Debugging</h2>
+        <div class="features-grid">
+          <div class="card feature-card">
+            <h3>Precision Canvas Tools</h3>
+            <p>Circle, Rectangle, Arrow, Freehand Pen, and Text Labels with color picker, stroke thickness, and instant Undo.</p>
+          </div>
+          <div class="card feature-card">
+            <h3>AI-Ready Prompt Builder</h3>
+            <p>Formats bug symptoms, annotation counts, expected behavior, and HTML/CSS snippets into a clean Markdown prompt.</p>
+          </div>
+          <div class="card feature-card">
+            <h3>Works Anywhere</h3>
+            <p>Pure HTML, CSS, and JavaScript. No Chrome extension, no backend server, and no build step required.</p>
+          </div>
+          <div class="card feature-card">
+            <h3>Recent Reports History</h3>
+            <p>Saved bug reports stay in your browser's local storage so you can revisit, copy prompts, or re-download screenshots.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Bug Reports -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head-row">
+          <h2 class="section-title" style="margin-bottom:0;">Recent Bug Reports</h2>
+          <button type="button" class="btn btn-ghost btn-sm hidden" id="btn-clear-reports">Clear All</button>
+        </div>
+        <div id="recent-reports-grid" class="reports-grid"></div>
+      </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="section">
+      <div class="container">
+        <div class="card privacy-card">
+          <div>
+            <h3>100% Local &amp; Private</h3>
+            <p>All screenshots, annotations, code snippets, and bug reports remain strictly inside your browser's memory and <code>localStorage</code>. Nothing is ever uploaded to any external server or API.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== VIEW 2: INTERACTIVE BUG STUDIO ==================== -->
+  <main id="view-studio" class="view">
+    <div class="studio-layout">
+      <!-- Left: Canvas Workspace -->
+      <section class="studio-canvas-pane">
+        <!-- Toolbar -->
+        <div class="canvas-toolbar" role="toolbar" aria-label="Annotation tools">
+          <div class="tool-group">
+            <button type="button" class="tool-btn active" data-tool="circle" title="Circle (O)">◯ Circle</button>
+            <button type="button" class="tool-btn" data-tool="rect" title="Rectangle (R)">▭ Box</button>
+            <button type="button" class="tool-btn" data-tool="arrow" title="Arrow (A)">↗ Arrow</button>
+            <button type="button" class="tool-btn" data-tool="pen" title="Freehand Pen (P)">✎ Pen</button>
+            <button type="button" class="tool-btn" data-tool="text" title="Text Label (T)">T Text</button>
+          </div>
+
+          <div class="tool-group">
+            <button type="button" class="color-dot active" data-color="#EF4444" style="background:#EF4444;" aria-label="Red"></button>
+            <button type="button" class="color-dot" data-color="#F59E0B" style="background:#F59E0B;" aria-label="Amber"></button>
+            <button type="button" class="color-dot" data-color="#3B82F6" style="background:#3B82F6;" aria-label="Blue"></button>
+            <button type="button" class="color-dot" data-color="#10B981" style="background:#10B981;" aria-label="Emerald"></button>
+          </div>
+
+          <div class="tool-group">
+            <select id="stroke-width-select" class="select-compact" aria-label="Stroke width">
+              <option value="3">Thin</option>
+              <option value="5" selected>Medium</option>
+              <option value="8">Bold</option>
+            </select>
+            <button type="button" class="btn btn-ghost btn-sm" id="btn-undo">↶ Undo</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="btn-clear-canvas">Clear</button>
+            <label class="btn btn-outline btn-sm" for="file-upload-input">Replace Image</label>
+          </div>
+        </div>
+
+        <!-- Dropzone / Canvas Stage -->
+        <div class="canvas-stage" id="canvas-stage">
+          <div id="upload-dropzone" class="upload-dropzone">
+            <div class="dropzone-icon">🖼️</div>
+            <h3>Drop a screenshot here</h3>
+            <p>Or choose a PNG/JPG file, press <kbd>Ctrl+V</kbd> to paste, or try a sample.</p>
+            <div class="dropzone-actions">
+              <label class="btn btn-primary" for="file-upload-input">Choose Screenshot</label>
+              <button type="button" class="btn btn-outline" id="dropzone-sample-btn">Load Sample UI Bug</button>
+            </div>
+            <input type="file" id="file-upload-input" accept="image/*" class="hidden" />
+          </div>
+
+          <canvas id="annotation-canvas" class="hidden"></canvas>
+        </div>
+      </section>
+
+      <!-- Right: Issue Details & Prompt Builder -->
+      <aside class="studio-sidebar">
+        <div class="card">
+          <h2 class="panel-title">Describe the Bug</h2>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="bug-category">Issue Type</label>
+              <select id="bug-category">
+                <option value="Layout / Alignment">Layout / Alignment</option>
+                <option value="Overflow / Clipping">Overflow / Clipping</option>
+                <option value="Responsive / Mobile">Responsive / Mobile</option>
+                <option value="Typography / Contrast">Typography / Contrast</option>
+                <option value="Broken Interaction">Broken Interaction</option>
+                <option value="Other UI Bug">Other UI Bug</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="target-ai">Target AI Agent</label>
+              <select id="target-ai">
+                <option value="Universal (Gemini / Claude / ChatGPT)">Universal</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Claude">Claude</option>
+                <option value="ChatGPT">ChatGPT</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="bug-description">What's wrong &amp; what should happen? *</label>
+            <textarea id="bug-description" rows="3" placeholder="e.g., The Submit button overflows outside the card on mobile. It should stay centered with 16px padding."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="bug-code">Relevant HTML / CSS Code (Optional)</label>
+            <textarea id="bug-code" rows="4" class="code-input" placeholder="<div class=&quot;card&quot;>...</div>"></textarea>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-full" id="btn-generate-prompt">
+            ✦ Generate Bug-Fixing Prompt
+          </button>
+        </div>
+
+        <div class="card" id="prompt-output-card">
+          <div class="panel-head-row">
+            <h2 class="panel-title" style="margin:0;">Generated AI Prompt</h2>
+            <span class="badge" id="annotation-count-badge">0 annotations</span>
+          </div>
+          <textarea id="generated-prompt" rows="7" class="code-input" readonly placeholder="Click 'Generate Bug-Fixing Prompt' above to build a structured prompt..."></textarea>
+
+          <div class="export-actions">
+            <button type="button" class="btn btn-outline" id="btn-copy-prompt">📋 Copy Prompt</button>
+            <button type="button" class="btn btn-emerald" id="btn-download-png">⬇ Download PNG</button>
+          </div>
+          <button type="button" class="btn btn-ghost btn-full" id="btn-save-report" style="margin-top:8px;">
+            💾 Save to Recent Reports
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script src="./assets/js/storage.js"></script>
+  <script src="./assets/js/canvas.js"></script>
+  <script src="./assets/js/prompt.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
